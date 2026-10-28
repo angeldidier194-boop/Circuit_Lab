@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Circuit Lab: serie, paralelo y mixto</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css"></head>
+<body><main>
+<header><h1>Circuit Lab</h1><p>Arma, rompe y clasifica circuitos en serie, paralelo y mixto.</p></header>
+<nav id="tabs" role="tablist">
+<button role="tab" data-p="ex" aria-selected="true">Explorar</button>
+<button role="tab" data-p="re" aria-selected="false">Reto</button>
+<button role="tab" data-p="ra" aria-selected="false">Rápido</button>
+<button role="tab" data-p="th" aria-selected="false">Thévenin</button>
+<button role="tab" data-p="no" aria-selected="false">Norton</button>
+</nav>
+
+<section id="ex" class="panel">
+<div class="seg" id="exSeg"><button data-k="serie" aria-pressed="true">Serie</button><button data-k="paralelo" aria-pressed="false">Paralelo</button><button data-k="mixto" aria-pressed="false">Mixto</button></div>
+<div class="board" id="exBoard"></div>
+<p class="read" id="exRead"></p>
+<p class="msg" id="exMsg"></p>
+<p class="tip" id="exTip"></p>
+<button class="btn" id="exReset">Poner todos los focos</button>
+</section>
+
+<section id="re" class="panel" hidden>
+<div class="top"><span id="reLv"></span><span id="reStars"></span></div>
+<h2 id="reGoal"></h2>
+<div class="board" id="reBoard"></div>
+<div class="ctl"><span id="reL1"></span><div class="seg" data-t="1"><button data-v="S">Serie</button><button data-v="P">Paralelo</button></div></div>
+<div class="ctl"><span id="reL2"></span><div class="seg" data-t="2"><button data-v="S">Serie</button><button data-v="P">Paralelo</button></div></div>
+<p class="read" id="reRead"></p>
+<p class="msg" id="reMsg"></p>
+<button class="btn" id="reNext" hidden>Siguiente nivel</button>
+</section>
+
+<section id="ra" class="panel" hidden>
+<div id="raIntro"><h2>¿Serie, paralelo o mixto?</h2><p id="raInfo" class="tip">Tienes 3 vidas. Cada 4 aciertos subes de nivel: menos tiempo, circuitos más complejos y preguntas para calcular la resistencia total. Subir de nivel te regala una vida.</p><button class="btn" id="raGo">Empezar</button></div>
+<div id="raGame" hidden>
+<div class="stats"><span>Puntos <b id="raScore">0</b></span><span>Racha <b id="raStreak">0</b></span><span>Nivel <b id="raLvl">1</b></span><span id="raLives"></span></div>
+<div class="bar"><i id="raBar"></i></div>
+<div class="board" id="raBoard"></div>
+<p class="read" id="raQ"></p><div class="seg" id="raAns"></div>
+<p class="msg" id="raMsg"></p>
+</div>
+</section>
+<section id="th" class="panel" hidden>
+<h2>Teorema de Thévenin</h2>
+<p class="tip">Visto desde las salidas a y b, un circuito se cambia por una fuente Vth en serie con una resistencia Rth. Circuito serie: regla divisora de voltaje. Circuito paralelo: regla divisora de corriente.</p>
+<div class="stats"><span>Problemas <b id="pSolved">0</b></span><span>Puntos <b id="pScore">0</b></span><span>Nivel <b id="pLvl">1</b></span></div>
+<p class="cap">Circuito original</p>
+<div class="board" id="pOrig"></div>
+<p class="read" id="pData"></p>
+<p class="cap" id="pStep"></p>
+<div class="board" id="pBoard"></div>
+<p class="read" id="pQ"></p>
+<div class="seg" id="pAns"></div>
+<p class="msg" id="pMsg"></p>
+<p class="sum" id="pSum" hidden></p>
+<button class="btn" id="pNext" hidden>Continuar</button>
+</section>
+<section id="no" class="panel" hidden>
+<h2>Teorema de Norton</h2>
+<p class="tip">Visto desde las salidas a y b, un circuito se cambia por una fuente de corriente In en paralelo con una resistencia Rn. In es la corriente que pasa por un cable puesto entre a y b, y Rn es la resistencia vista desde a y b con las fuentes apagadas (una fuente de corriente apagada es un circuito abierto y una de voltaje es un cable). Aquí se usa la regla divisora de corriente. Además, In = Vth / Rn.</p>
+<div class="stats"><span>Problemas <b id="nSolved">0</b></span><span>Puntos <b id="nScore">0</b></span><span>Nivel <b id="nLvl">1</b></span></div>
+<p class="cap">Circuito original</p>
+<div class="board" id="nOrig"></div>
+<p class="read" id="nData"></p>
+<p class="cap" id="nStep"></p>
+<div class="board" id="nBoard"></div>
+<p class="read" id="nQ"></p>
+<div class="seg" id="nAns"></div>
+<p class="msg" id="nMsg"></p>
+<p class="sum" id="nSum" hidden></p>
+<button class="btn" id="nNext" hidden>Continuar</button>
+</section>
+</main>
+<script src="script.js"></script></body></html>
